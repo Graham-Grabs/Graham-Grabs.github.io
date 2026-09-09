@@ -1,65 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>GRABS coder's | life runs on technology</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#070a0f;color:#fff;font-family:'Space Grotesk',sans-serif}
-nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 6%;background:rgba(7,10,15,.92);backdrop-filter:blur(10px);z-index:100;border-bottom:1px solid #1a2332}
-.logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:22px}
-.logo-img{width:44px;height:44px;background:#0f1f2e;border:1px solid #1e3a4a;border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(46,229,214,.25)}
-.logo-img img{width:32px;height:32px;object-fit:contain}
-.logo span{color:#2ee5d6}
-.btn{background:#2ee5d6;color:#000;padding:12px 28px;border-radius:30px;text-decoration:none;font-weight:700;display:inline-block}
-.hero{padding:140px 6% 60px;text-align:center;background:radial-gradient(circle at 50% 0%, #132a3a 0%, #070a0f 60%)}
-.hero h1{font-size:clamp(36px,7vw,72px);line-height:.9;margin-bottom:18px}
-.hero h1 i{color:#2ee5d6;font-style:normal}
-.hero p{color:#8a9bb5;max-width:600px;margin:0 auto 30px;font-size:18px}
-.services{padding:40px 6%;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:#10151f;border:1px solid #1c2a3d;border-radius:16px;padding:30px}
-.card p{color:#8a9bb5;font-size:14px;margin-top:10px;line-height:1.5}
-.banner{margin:60px 6%;background:linear-gradient(100deg,#2ee5d6,#00a9ff);color:#000;border-radius:20px;padding:40px;text-align:center}
-footer{padding:50px 6%;text-align:center;border-top:1px solid #1a2332;background:#070a0f}
-.tagline{font-size:32px;color:#fff;letter-spacing:2px;font-weight:300;font-style:italic;margin-bottom:15px}
-.tagline span{color:#2ee5d6;font-weight:800}
-.footer-sub{color:#5a6d8a;font-size:13px;margin-top:10px;line-height:1.8}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graham Grabs</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7f6;
+      color: #17211d;
+      line-height: 1.6;
+    }
+
+    /* ===== FIXED NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background: #102a24;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      z-index: 1000;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      color: #d9b86c;
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #d9b86c;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      padding-top: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+
+      background:
+        linear-gradient(rgba(16,42,36,0.75), rgba(16,42,36,0.8)),
+        url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 750px;
+      padding: 30px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      margin-bottom: 15px;
+      color: #d9b86c;
+    }
+
+    .hero p {
+      font-size: 21px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 28px;
+      background: #d9b86c;
+      color: #102a24;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: white;
+      transform: translateY(-2px);
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 90px 7%;
+      scroll-margin-top: 70px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #102a24;
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .section-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+      color: #5b665f;
+    }
+
+    /* ===== CARDS ===== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 22px;
+    }
+
+    .card h3 {
+      color: #102a24;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #626c66;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      background: #102a24;
+      color: white;
+    }
+
+    .about-container {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about .section-title {
+      color: #d9b86c;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      background: white;
+    }
+
+    .contact-box {
+      max-width: 650px;
+      margin: auto;
+      text-align: center;
+      padding: 35px;
+      border-radius: 12px;
+      background: #f5f7f6;
+    }
+
+    .contact-box p {
+      margin: 12px 0;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #081914;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    footer span {
+      color: #d9b86c;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+
+      nav {
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+
+      nav ul li a {
+        font-size: 12px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 70px 5%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        height: 60px;
+      }
+
+      nav ul {
+        gap: 8px;
+      }
+
+      nav ul li a {
+        font-size: 10px;
+      }
+
+      .logo {
+        font-size: 17px;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<nav>
-<div class="logo"><div class="logo-img"><img src="https://graham-grabs.github.io/logo.png" onerror="this.parentElement.innerHTML='[G]'" alt="G"></div> GRABS <span>coder's</span></div>
-<a class="btn" href="https://wa.me/256763558581?text=Hi%20GRABS%20coder's%20-%20I%20saw%20your%20site%20graham-grabs.github.io">💬 0763558581</a>
-</nav>
 
-<section class="hero">
-<h1>We Build <i>&lt;/&gt;</i><br>The Future</h1>
-<p>International Coding Company from Kampala, Uganda. Turning ideas into websites, apps & digital systems.</p>
-<a class="btn" href="https://wa.me/256763558581">Start Your Project →</a>
-</section>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">GRAHAM GRABS</div>
 
-<section class="services">
-<div class="card"><h3>🌐 Websites</h3><p>Modern, fast, Google-ready business sites.</p></div>
-<div class="card"><h3>📱 Apps</h3><p>Android & iPhone apps for shops & startups.</p></div>
-<div class="card"><h3>🛒 E-Commerce</h3><p>Online shops with MTN MoMo & Airtel Money.</p></div>
-<div class="card"><h3>🤖 Systems</h3><p>School, hospital, inventory — we code it all.</p></div>
-</section>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#grabs">Grabs</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<div class="banner">
-<h2>Ready to launch?</h2>
-<p style="margin:10px 0 20px">We are in Kampala but we work worldwide.</p>
-<a class="btn" style="background:#000;color:#fff" href="https://wa.me/256763558581">Chat on WhatsApp Now</a>
-</div>
 
-<footer>
-<div class="tagline">life runs on <span>technology</span></div>
-<div class="footer-sub">
-<strong style="color:white;letter-spacing:2px">GRABS coder's</strong><br>
-0763558581 | Kampala, Uganda<br>
-https://graham-grabs.github.io<br><br>
-© 2026 GRABS coder's — We Build The Future
-</div>
-</footer>
+  <!-- HOME -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Graham Grabs</h1>
+
+      <p>
+        Discover something special. Quality, style and unforgettable
+        experiences — all in one place.
+      </p>
+
+      <a href="#grabs" class="btn">Explore Now</a>
+    </div>
+  </section>
+
+
+  <!-- GRABS -->
+  <section id="grabs">
+    <h2 class="section-title">Our Grabs</h2>
+
+    <p class="section-intro">
+      Explore some of our featured products and experiences.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80"
+          alt="Watch">
+        <div class="card-content">
+          <h3>Premium Style</h3>
+          <p>
+            Carefully selected items that combine quality and modern style.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80"
+          alt="Fashion">
+        <div class="card-content">
+          <h3>Fashion</h3>
+          <p>
+            Stand out with products chosen for people who appreciate style.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80"
+          alt="Clothing">
+        <div class="card-content">
+          <h3>Unique Finds</h3>
+          <p>
+            Discover interesting and memorable finds worth grabbing.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-container">
+
+      <h2 class="section-title">About Graham Grabs</h2>
+
+      <p>
+        Graham Grabs is built around discovering quality products,
+        exciting ideas and things worth sharing. We aim to make every
+        visit simple, enjoyable and memorable.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+
+    <h2 class="section-title">Contact Us</h2>
+
+    <p class="section-intro">
+      Have a question or want to know more? Get in touch with us.
+    </p>
+
+    <div class="contact-box">
+
+      <p><strong>📧 Email:</strong> your@email.com</p>
+
+      <p><strong>📱 Phone:</strong> +256 XXX XXX XXX</p>
+
+      <p><strong>📍 Location:</strong> Uganda</p>
+
+      <a href="mailto:your@email.com" class="btn">
+        Contact Us
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      © 2026 <span>Graham Grabs</span>. All rights reserved.
+    </p>
+  </footer>
+
 </body>
-  </html>
+</html>
